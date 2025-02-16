@@ -1,10 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1739705674
-bombshell.png::CompressedTexture2D::3417937297907025520::1739705167::1739705180::1::::<><>::
-icon.svg::CompressedTexture2D::4660006093457862740::1739701041::1739701248::1::::<><>::
-::res://Fonts/::1739705665
-digital-7 (italic).ttf::FontFile::7881791177670527388::1300882758::1739705677::1::::<><>::
-digital-7 (mono italic).ttf::FontFile::6307613113545929895::1370594940::1739705677::1::::<><>::
-digital-7 (mono).ttf::FontFile::2092566489979178274::1300882792::1739705677::1::::<><>::
-digital-7.ttf::FontFile::5280396865602273164::1300882670::1739705677::1::::<><>::
-readme.txt::TextFile::-1::1370593782::0::1::::<><>::
+::res://::1739711188
+bombshell.png::CompressedTexture2D::3417937297907025520::1739710793::1739711189::1::::<><>::
+icon.svg::CompressedTexture2D::4660006093457862740::1739710793::1739711189::1::::<><>::
+main.gd::GDScript::-1::1739710793::0::1::::<>Node2D<>::
+main.tscn::PackedScene::2281846899482567584::1739710793::0::1::::<><>::res://main.gd<>uid://boxw6sxl1vp3u::::res://bombshell.png<>uid://chh4mn3cebhse::::res://Fonts/digital-7.ttf
+::res://Assets/::1739710841
+::res://Fonts/::1739710793
+digital-7 (italic).ttf::FontFile::7881791177670527388::1739710793::1739711189::1::::<><>::
+digital-7 (mono italic).ttf::FontFile::6307613113545929895::1739710793::1739711189::1::::<><>::
+digital-7 (mono).ttf::FontFile::2092566489979178274::1739710793::1739711189::1::::<><>::
+digital-7.ttf::FontFile::5280396865602273164::1739710793::1739711189::1::::<><>::
+readme.txt::TextFile::-1::1739710793::0::1::::<><>::
