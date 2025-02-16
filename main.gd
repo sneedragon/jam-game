@@ -1,16 +1,18 @@
 extends Node2D
 
-var countdown_time : float = 60.0  # Countdown time in seconds
+var minigame_on : bool = false
+var countdown_time : float = 10.0  # Countdown time in seconds
 var time_remaining : float = countdown_time
 
 func _ready():
-	$Time_Label.text = (format_time(time_remaining))
+	$Time_Display/Time_Label.text = (format_time(time_remaining))
 func _process(delta):
 	if time_remaining > 0:
 		time_remaining -= delta
-		$Time_Label.text = (format_time(time_remaining))
+		if minigame_on == false:
+			$Time_Display/Time_Label.text = (format_time(time_remaining))
 	else:
-		$Time_Label.text = ("00:00:00")  # Timer finished
+		$Time_Display/Time_Label.text = ("00:00:00")  # Timer finished
 	
 func format_time(seconds: float) -> String:
 	var minutes = int(seconds) / 60
