@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=9 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
 [ext_resource type="Texture2D" uid="uid://cvmepwduntblv" path="res://Assets/Red_Button.png" id="3_tbnv7"]
 [ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_13vu7"]
-[ext_resource type="Script" path="res://mini.gd" id="5_bt5ri"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
 
@@ -82,9 +81,9 @@ offset_left = 450.0
 offset_top = 94.0
 offset_right = 495.0
 offset_bottom = 134.0
-script = ExtResource("5_bt5ri")
 
 [node name="Mini_Label" type="Label" parent="Mini_Display"]
+layout_mode = 0
 offset_right = 50.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
