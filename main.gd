@@ -13,6 +13,7 @@ func _process(delta):
 	if time_remaining > 0:
 		time_remaining -= delta
 		minigame_time -= delta
+		mini_timer -= delta
 		if minigame_time < 0 and minigame_on == false:
 			minigame_on = true
 			_minigame()
@@ -41,6 +42,8 @@ func _on_button_pressed() -> void:
 ######################################
 var minigame_type = null
 var minigame = [Callable(self, "_no_game"),Callable(self, "_math_game")]
+var mini_timer : float = 10
+var mini_win : bool
 
 func _minigame():
 	if minigame_type == null:
@@ -49,7 +52,13 @@ func _minigame():
 		minigame[minigame_type].call()
 		
 func _mini_reset():
-	minigame_time = 5
+	if mini_win == true:
+		pass
+		#TODO win action
+	else:
+		time_remaining = time_remaining / 2
+		#TODO lose action
+	minigame_time = 10
 	minigame_on = false
 	minigame_type = null
 		
@@ -59,12 +68,91 @@ func _no_game():
 
 ##Math game
 ######
-var math_result
-var math_guess
+var math_result : int = -100
+var math_string : String
+var math_guess: String
+var operation : int
 
 func _math_game():
-	print("math game!")
-	var math_number1 = randi_range(-99, 99)
-	var math_number2 = randi_range(-99, 99)
-	
-	_mini_reset()
+	mini_timer = 10
+	while mini_timer > 0: ##TODO BREAKS GAME -> NO WHILE; NEEDS TO BE COUNTED BY PHYSICS_PROCESS
+		if math_result == -100:
+			var math_number1 = randi_range(1, 99)
+			var math_number2 = randi_range(1, 99)
+			operation = randi_range(0, 3) #0 +, 1-, 2*, 3/
+			match operation:
+				0:
+					math_result = math_number1 + math_number2
+					$Time_Display/Time_Label.text = (str(math_number1) + " + " + str(math_number2))
+				1:
+					math_result = math_number1 - math_number2
+					$Time_Display/Time_Label.text = (str(math_number1) + " - " + str(math_number2))
+				2:
+					math_result = math_number1 * math_number2
+					$Time_Display/Time_Label.text = (str(math_number1) + " x " + str(math_number2))
+				3:
+					while math_number1 % math_number2 != 0:
+						math_number1 = randi_range(1, 99)
+						math_number2 = randi_range(1, 99)
+					math_result = math_number1 / math_number2
+					$Time_Display/Time_Label.text = (str(math_number1) + " / " + str(math_number2))
+			math_number1 = null
+			math_number2 = null
+	if math_guess == str(math_result) and mini_timer <= 0:
+		var mini_win = true
+		_mini_reset()
+	elif mini_timer <= 0:
+		var mini_win = false
+		math_guess = ""
+		math_result = -100
+		_mini_reset()
+		
+## PINPAD BUTTONS
+func _on_button_0_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "0"
+
+
+func _on_button_1_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "1"
+
+
+func _on_button_2_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "2"
+
+
+func _on_button_3_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "3"
+
+
+func _on_button_4_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "4"
+
+
+func _on_button_5_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "5"
+
+
+func _on_button_6_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "6"
+
+
+func _on_button_7_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "7"
+
+
+func _on_button_8_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "8"
+
+
+func _on_button_9_pressed() -> void:
+	if minigame_type == 1:
+		math_guess = math_guess + "9"
