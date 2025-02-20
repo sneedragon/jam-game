@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=45 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_13vu7"]
 [ext_resource type="Texture2D" uid="uid://dfv8oh0sjleia" path="res://Assets/PinPad_0.png" id="5_0bxms"]
 [ext_resource type="Texture2D" uid="uid://dgdcy4qph3gsu" path="res://Assets/PinPad_1.png" id="6_0vg1c"]
+[ext_resource type="AudioStream" uid="uid://hba35blksvcn" path="res://Assets/metalpipe.ogg" id="6_c0r87"]
 [ext_resource type="Texture2D" uid="uid://d143ksobcakg6" path="res://Assets/PinPad_2.png" id="7_k2cwj"]
 [ext_resource type="Texture2D" uid="uid://byfkeh5cmycdt" path="res://Assets/PinPad_3.png" id="8_vo64u"]
 [ext_resource type="Texture2D" uid="uid://c6fv5q4tb8d2h" path="res://Assets/PinPad_4.png" id="9_8mtjc"]
@@ -132,6 +133,9 @@ theme_override_font_sizes/font_size = 50
 text = "ERROR!
 "
 horizontal_alignment = 1
+
+[node name="sfx_pipe" type="AudioStreamPlayer2D" parent="Time_Display/Time_Label"]
+stream = ExtResource("6_c0r87")
 
 [node name="ColorRect" type="ColorRect" parent="Time_Display"]
 z_index = -1
@@ -362,53 +366,92 @@ position = Vector2(790, 317)
 [node name="Simon_Timer" type="Timer" parent="Simon_Game"]
 one_shot = true
 
+[node name="Simon_Timer2" type="Timer" parent="Simon_Game"]
+one_shot = true
+
 [node name="SimonBlue" type="Sprite2D" parent="Simon_Game"]
+z_index = 1
 position = Vector2(-40, -30)
 texture = ExtResource("21_hk1da")
 
 [node name="SimonBlueLight" type="Sprite2D" parent="Simon_Game/SimonBlue"]
+z_index = -1
 texture = ExtResource("22_5lsa8")
 
 [node name="SS_Button_B" type="Button" parent="Simon_Game/SimonBlue"]
-offset_right = 8.0
-offset_bottom = 8.0
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -32.0
+offset_right = -37.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SimonGreen" type="Sprite2D" parent="Simon_Game"]
+z_index = 1
 position = Vector2(40, -30)
 texture = ExtResource("22_i48ku")
 
 [node name="SimonGreenLight" type="Sprite2D" parent="Simon_Game/SimonGreen"]
+z_index = -1
 texture = ExtResource("24_28oht")
 
 [node name="SS_Button_G" type="Button" parent="Simon_Game/SimonGreen"]
-offset_left = -80.0
-offset_right = -72.0
-offset_bottom = 8.0
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SimonRed" type="Sprite2D" parent="Simon_Game"]
+z_index = 1
 position = Vector2(-40, 30)
 texture = ExtResource("23_rhdtl")
 
 [node name="SimonRedLight" type="Sprite2D" parent="Simon_Game/SimonRed"]
+z_index = -1
 texture = ExtResource("26_dhyib")
 
 [node name="SS_Button_R" type="Button" parent="Simon_Game/SimonRed"]
-offset_top = -60.0
-offset_right = 8.0
-offset_bottom = -52.0
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SimonYellow" type="Sprite2D" parent="Simon_Game"]
+z_index = 1
 position = Vector2(40, 30)
 texture = ExtResource("24_vr2c2")
 
 [node name="SimonYellowLight" type="Sprite2D" parent="Simon_Game/SimonYellow"]
+z_index = -1
 texture = ExtResource("28_ifbbj")
 
 [node name="SS_Button_Y" type="Button" parent="Simon_Game/SimonYellow"]
-offset_left = -80.0
-offset_top = -60.0
-offset_right = -72.0
-offset_bottom = -52.0
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button1" to="." method="_on_button_1_pressed"]
@@ -423,3 +466,8 @@ offset_bottom = -52.0
 [connection signal="pressed" from="Pinpad/Button0" to="." method="_on_button_0_pressed"]
 [connection signal="pressed" from="Pinpad/ButtonMinus" to="." method="_on_button_minus_pressed"]
 [connection signal="timeout" from="Simon_Game/Simon_Timer" to="." method="_on_simon_timer_timeout"]
+[connection signal="timeout" from="Simon_Game/Simon_Timer2" to="." method="_on_simon_timer_2_timeout"]
+[connection signal="pressed" from="Simon_Game/SimonBlue/SS_Button_B" to="." method="_on_ss_button_b_pressed"]
+[connection signal="pressed" from="Simon_Game/SimonGreen/SS_Button_G" to="." method="_on_ss_button_g_pressed"]
+[connection signal="pressed" from="Simon_Game/SimonRed/SS_Button_R" to="." method="_on_ss_button_r_pressed"]
+[connection signal="pressed" from="Simon_Game/SimonYellow/SS_Button_Y" to="." method="_on_ss_button_y_pressed"]
