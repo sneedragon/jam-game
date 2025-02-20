@@ -1,12 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740043820
-game_over.tscn::PackedScene::5254544794089667838::1739878742::0::1::::<><>::
+::res://::1740048380
+game_over.tscn::PackedScene::5254544794089667838::1740048380::0::1::::<><>::
 icon.svg::CompressedTexture2D::4660006093457862740::1739701041::1739701248::1::::<><>::
-main.gd::GDScript::-1::1739876450::0::1::::<>Node2D<>::
-main.tscn::PackedScene::2281846899482567584::1740043808::0::1::::<><>::res://main.gd<>uid://dswtauhcl5w8n::::res://Assets/bombshell.png<>uid://cvmepwduntblv::::res://Assets/Red_Button.png<>uid://chh4mn3cebhse::::res://Fonts/digital-7.ttf<>uid://dfv8oh0sjleia::::res://Assets/PinPad_0.png<>uid://dgdcy4qph3gsu::::res://Assets/PinPad_1.png<>uid://d143ksobcakg6::::res://Assets/PinPad_2.png<>uid://byfkeh5cmycdt::::res://Assets/PinPad_3.png<>uid://c6fv5q4tb8d2h::::res://Assets/PinPad_4.png<>uid://ix5quitadaus::::res://Assets/PinPad_5.png<>uid://8hjeuebc63ny::::res://Assets/PinPad_6.png<>uid://bjbi1p320osh8::::res://Assets/PinPad_7.png<>uid://dutna0x7kr4ro::::res://Assets/PinPad_8.png<>uid://beex76v7jbqht::::res://Assets/PinPad_9.png
+main.gd::GDScript::-1::1740047917::0::1::::<>Node2D<>::
+main.tscn::PackedScene::2281846899482567584::1740048380::0::1::::<><>::res://main.gd<>uid://dswtauhcl5w8n::::res://Assets/bombshell.png<>uid://cvmepwduntblv::::res://Assets/Red_Button.png<>uid://chh4mn3cebhse::::res://Fonts/digital-7.ttf<>uid://dfv8oh0sjleia::::res://Assets/PinPad_0.png<>uid://dgdcy4qph3gsu::::res://Assets/PinPad_1.png<>uid://d143ksobcakg6::::res://Assets/PinPad_2.png<>uid://byfkeh5cmycdt::::res://Assets/PinPad_3.png<>uid://c6fv5q4tb8d2h::::res://Assets/PinPad_4.png<>uid://ix5quitadaus::::res://Assets/PinPad_5.png<>uid://8hjeuebc63ny::::res://Assets/PinPad_6.png<>uid://bjbi1p320osh8::::res://Assets/PinPad_7.png<>uid://dutna0x7kr4ro::::res://Assets/PinPad_8.png<>uid://beex76v7jbqht::::res://Assets/PinPad_9.png<>uid://dmla75skjwwli::::res://Assets/DiodeOff.png
 README.md::TextFile::-1::1740043820::0::1::::<><>::
-::res://Assets/::1740043853
+::res://Assets/::1740048576
 bombshell.png::CompressedTexture2D::8469232231403173991::1740043820::1740043859::1::::<><>::
+DiodeOff.png::CompressedTexture2D::8024295079409561558::1740047930::1740047937::1::::<><>::
+DiodeOn.png::CompressedTexture2D::5951264653095594268::1740047930::1740047937::1::::<><>::
 PinPad_0.png::CompressedTexture2D::7555587271094545544::1739716615::1739716626::1::::<><>::
 PinPad_1.png::CompressedTexture2D::7586754087794945856::1739716615::1739716626::1::::<><>::
 PinPad_2.png::CompressedTexture2D::9045757841368072915::1739716615::1739716626::1::::<><>::
@@ -17,7 +19,8 @@ PinPad_6.png::CompressedTexture2D::2331237137139584762::1739716615::1739716626::
 PinPad_7.png::CompressedTexture2D::3020717653138623287::1739716615::1739716626::1::::<><>::
 PinPad_8.png::CompressedTexture2D::8603052772155305004::1739716615::1739716626::1::::<><>::
 PinPad_9.png::CompressedTexture2D::2676888867630820889::1739716615::1739716626::1::::<><>::
-Red_Button.png::CompressedTexture2D::6271850432788184375::1739713605::1739713607::1::::<><>::
+PinPad_Minus.png::CompressedTexture2D::5301440755590033141::1740048576::1740048580::1::::<><>::
+Red_Button.png::CompressedTexture2D::6271850432788184375::1740047475::1740047548::1::::<><>::
 ::res://Fonts/::1739705677
 digital-7 (italic).ttf::FontFile::7881791177670527388::1300882758::1739705677::1::::<><>::
 digital-7 (mono italic).ttf::FontFile::6307613113545929895::1370594940::1739705677::1::::<><>::

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=32 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bjbi1p320osh8" path="res://Assets/PinPad_7.png" id="12_4wbri"]
 [ext_resource type="Texture2D" uid="uid://dutna0x7kr4ro" path="res://Assets/PinPad_8.png" id="13_uy8t0"]
 [ext_resource type="Texture2D" uid="uid://beex76v7jbqht" path="res://Assets/PinPad_9.png" id="14_j3e6h"]
+[ext_resource type="Texture2D" uid="uid://chsb7pvkp7c5b" path="res://Assets/PinPad_Minus.png" id="15_mnhjr"]
+[ext_resource type="Texture2D" uid="uid://dmla75skjwwli" path="res://Assets/DiodeOff.png" id="15_p2uow"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
 
@@ -59,10 +61,10 @@ texture = ExtResource("13_uy8t0")
 texture = ExtResource("14_j3e6h")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0kcpp"]
-texture = ExtResource("5_0bxms")
+texture = ExtResource("15_mnhjr")
 
 [node name="Main" type="Node2D"]
-position = Vector2(-16, 72)
+position = Vector2(8, 72)
 script = ExtResource("1_3ajsl")
 
 [node name="Bombshell_Sprite" type="Sprite2D" parent="."]
@@ -80,7 +82,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0vwd7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_exewf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nlb8u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_jlm54")
-text = "SNOOZE"
 
 [node name="Time_Display" type="Control" parent="."]
 layout_mode = 3
@@ -126,6 +127,39 @@ offset_right = 203.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("4_13vu7")
 
+[node name="Pin_Display" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 208.0
+offset_right = 348.0
+offset_bottom = 248.0
+
+[node name="Pin_Label" type="Label" parent="Pin_Display"]
+layout_mode = 1
+offset_left = 20.0
+offset_right = 145.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_13vu7")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Pin_Display"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0.0588235, 0, 1)
+
 [node name="Mini_Display" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -163,9 +197,9 @@ color = Color(0, 0.0588235, 0, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 248.0
-offset_top = 160.0
+offset_top = 224.0
 offset_right = 288.0
-offset_bottom = 200.0
+offset_bottom = 264.0
 
 [node name="Button0" type="Button" parent="Pinpad"]
 layout_mode = 0
@@ -252,7 +286,31 @@ offset_top = 144.0
 offset_right = 93.0
 offset_bottom = 189.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_0kcpp")
-text = "---"
+
+[node name="Diodes" type="Node2D" parent="."]
+
+[node name="DiodeOff" type="Sprite2D" parent="Diodes"]
+position = Vector2(96, 208)
+scale = Vector2(-0.198, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOff2" type="Sprite2D" parent="Diodes"]
+position = Vector2(96, 400)
+scale = Vector2(-0.198, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOff3" type="Sprite2D" parent="Diodes"]
+position = Vector2(1056, 400)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOff4" type="Sprite2D" parent="Diodes"]
+position = Vector2(1056, 208)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(568, 248)
 
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button0" to="." method="_on_button_0_pressed"]

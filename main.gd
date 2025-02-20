@@ -110,7 +110,7 @@ func _math_game():
 				$Time_Display/Time_Label.text = (str(math_number1) + " / " + str(math_number2))
 		math_number1 = null
 		math_number2 = null
-	if math_guess == str(math_result) and mini_timer == 0:
+	if math_guess == str(math_result):
 		mini_win = true
 		print(str(math_result))
 		print(math_guess)
