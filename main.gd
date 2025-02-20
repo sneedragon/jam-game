@@ -7,6 +7,9 @@ var minigame_time : float = 5 #Time until next Minigame
 var mini_timer : float = 0 #Time to finish minigame
 var minigame_type = null
 var lives: int = 5
+@onready var sfx_wrong: AudioStreamPlayer2D = $Audio/sfx_wrong
+@onready var sfx_correct: AudioStreamPlayer2D = $Audio/sfx_correct
+@onready var sfx_click: AudioStreamPlayer2D = $Audio/sfx_click
 
 func _ready():
 	$Time_Display/Time_Label.text = (format_time(time_remaining))
@@ -26,12 +29,16 @@ func _process(delta):
 			
 		elif minigame_on == false:
 			$Time_Display/Time_Label.text = (format_time(time_remaining))
+			if minigame_time < 3 and minigame_time > 2:
+				$Pin_Display/Pin_Label.text = "READY"
 			
 		elif minigame_on == true:
 			minigame_time = 5
 			
+			
 	else:
 		$Time_Display/Time_Label.text = ("00:00:00")  # Timer finished
+		get_tree().change_scene_to_file("res://game_over.tscn")
 		
 # converts time into clock format
 func format_time(seconds: float) -> String:
@@ -45,7 +52,9 @@ func format_seconds(seconds: float) -> String:
 
 # SNOOZE Button: adds 1 second to the main timer
 func _on_button_pressed() -> void:
-	time_remaining += 1
+	sfx_click.play()
+	if time_remaining > 0:
+		time_remaining += 1
 	
 ##Minigame Engine
 ######################################
@@ -60,12 +69,15 @@ func _minigame():
 		minigame[minigame_type].call()
 		
 func _mini_reset():
-	if mini_win == true:
-		pass
+	if mini_win == true: #WIN GAME
+		$Pin_Display/Pin_Label.text = "CORRECT"
+		sfx_correct.play()
 		#TODO win action
-	else:
+	else: #LOSE GAME
 		time_remaining = time_remaining / 2
 		lives =- 1
+		$Pin_Display/Pin_Label.text = "LOSER"
+		sfx_wrong.play()
 		#TODO lose action
 	minigame_time = 10
 	minigame_on = false
@@ -111,14 +123,14 @@ func _math_game():
 		math_number1 = null
 		math_number2 = null
 	if math_guess == str(math_result):
-		mini_win = true
+		mini_win = true # WINNING
 		print(str(math_result))
 		print(math_guess)
 		math_guess = ""
 		math_result = -100
 		_mini_reset()
 	elif mini_timer == 0:
-		mini_win = false
+		mini_win = false # LOSING
 		print(math_guess)
 		print(str(math_result))
 		math_guess = ""
@@ -127,54 +139,68 @@ func _math_game():
 		
 ## PINPAD BUTTONS
 func _on_button_0_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "0"
+		$Pin_Display/Pin_Label.text = math_guess
 
 
 func _on_button_1_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "1"
-
+		$Pin_Display/Pin_Label.text = math_guess
 
 func _on_button_2_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "2"
-
+		$Pin_Display/Pin_Label.text = math_guess
 
 func _on_button_3_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "3"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_4_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "4"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_5_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "5"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_6_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "6"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_7_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "7"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_8_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "8"
-
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_9_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "9"
-
+		$Pin_Display/Pin_Label.text = math_guess
+		
 func _on_button_minus_pressed() -> void:
+	sfx_click.play()
 	if minigame_type == 1:
 		math_guess = math_guess + "-"
+		$Pin_Display/Pin_Label.text = math_guess

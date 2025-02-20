@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=35 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://beex76v7jbqht" path="res://Assets/PinPad_9.png" id="14_j3e6h"]
 [ext_resource type="Texture2D" uid="uid://chsb7pvkp7c5b" path="res://Assets/PinPad_Minus.png" id="15_mnhjr"]
 [ext_resource type="Texture2D" uid="uid://dmla75skjwwli" path="res://Assets/DiodeOff.png" id="15_p2uow"]
+[ext_resource type="AudioStream" uid="uid://f5wpjxjrv20q" path="res://Assets/wrong.ogg" id="17_gxpwt"]
+[ext_resource type="AudioStream" uid="uid://b5f7t1v4s0tey" path="res://Assets/correct.ogg" id="18_boxao"]
+[ext_resource type="AudioStream" uid="uid://cukolmocybkj0" path="res://Assets/click.ogg" id="19_saaja"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
 
@@ -311,6 +314,20 @@ texture = ExtResource("15_p2uow")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(568, 248)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="sfx_wrong" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("17_gxpwt")
+volume_db = 6.611
+
+[node name="sfx_correct" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("18_boxao")
+volume_db = 6.611
+
+[node name="sfx_click" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("19_saaja")
+volume_db = 6.611
 
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button0" to="." method="_on_button_0_pressed"]
