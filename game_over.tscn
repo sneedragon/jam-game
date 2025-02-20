@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cg4lt5lg2wcig"]
+[gd_scene load_steps=3 format=3 uid="uid://cg4lt5lg2wcig"]
+
+[ext_resource type="FontFile" uid="uid://dkj87jhqfrl0g" path="res://Fonts/digital-7 (italic).ttf" id="1_iwy8d"]
+[ext_resource type="AudioStream" uid="uid://hba35blksvcn" path="res://Assets/metalpipe.ogg" id="2_ioyev"]
 
 [node name="Game_Over" type="Node2D"]
 
@@ -18,9 +21,16 @@ offset_left = 494.0
 offset_top = 314.0
 offset_right = 678.0
 offset_bottom = 337.0
-text = "YOU LOSE!!!!!!!!!!!!!!!!!!!!!!!!"
+theme_override_fonts/font = ExtResource("1_iwy8d")
+theme_override_font_sizes/font_size = 50
+text = "You Lose."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
+
+[node name="sfx_pipe" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ioyev")
+volume_db = 24.0
+autoplay = true

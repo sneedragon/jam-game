@@ -50,11 +50,11 @@ func format_time(seconds: float) -> String:
 func format_seconds(seconds: float) -> String:
 	return str(int(seconds))  # Convert to integer and then to string
 
-# SNOOZE Button: adds 1 second to the main timer
+# SNOOZE Button: adds 0.5 second to the main timer
 func _on_button_pressed() -> void:
 	sfx_click.play()
 	if time_remaining > 0:
-		time_remaining += 1
+		time_remaining += 0.5
 	
 ##Minigame Engine
 ######################################
