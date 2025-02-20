@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=30 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
@@ -58,6 +58,9 @@ texture = ExtResource("13_uy8t0")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlep1"]
 texture = ExtResource("14_j3e6h")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0kcpp"]
+texture = ExtResource("5_0bxms")
+
 [node name="Main" type="Node2D"]
 position = Vector2(-16, 72)
 script = ExtResource("1_3ajsl")
@@ -113,6 +116,15 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 color = Color(0, 0.0588235, 0, 1)
+
+[node name="Small_Time_Label" type="Label" parent="Time_Display"]
+modulate = Color(1, 0.0933158, 0.0317211, 1)
+layout_mode = 0
+offset_left = 152.0
+offset_top = 40.0
+offset_right = 203.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("4_13vu7")
 
 [node name="Mini_Display" type="Control" parent="."]
 layout_mode = 3
@@ -233,6 +245,15 @@ offset_right = 141.0
 offset_bottom = 141.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_wlep1")
 
+[node name="ButtonMinus" type="Button" parent="Pinpad"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 144.0
+offset_right = 93.0
+offset_bottom = 189.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0kcpp")
+text = "---"
+
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button0" to="." method="_on_button_0_pressed"]
 [connection signal="pressed" from="Pinpad/Button1" to="." method="_on_button_1_pressed"]
@@ -244,3 +265,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_wlep1")
 [connection signal="pressed" from="Pinpad/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="pressed" from="Pinpad/Button8" to="." method="_on_button_8_pressed"]
 [connection signal="pressed" from="Pinpad/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="Pinpad/ButtonMinus" to="." method="_on_button_minus_pressed"]
