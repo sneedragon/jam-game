@@ -19,11 +19,15 @@ func _process(delta):
 		time_remaining -= delta
 		minigame_time -= delta
 		global.total_time += delta
-		if mini_timer > 0 and minigame_type == 1:
+		if mini_timer > 0 and (minigame_type == 1 or (minigame_type == 2 and simon_timer_freeze == false)):
 			mini_timer = max(0, mini_timer - delta )
-			$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
-			$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
-			_math_game()
+			if minigame_type == 1:
+				$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
+				$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
+				_math_game()
+			elif minigame_type == 2:
+				$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
+				$Pin_Display/Pin_Label.text = "BOMB SAYS"
 		elif minigame_time < 0 and minigame_on == false:
 			minigame_on = true
 			_minigame()
@@ -43,6 +47,7 @@ func _process(delta):
 		
 # converts time into clock format
 func format_time(seconds: float) -> String:
+	@warning_ignore("integer_division")
 	var minutes = int(seconds) / 60
 	var seconds_left = int(seconds) % 60
 	var milliseconds = int((seconds - int(seconds)) * 100)
@@ -59,7 +64,7 @@ func _on_button_pressed() -> void:
 	
 ##Minigame Engine
 ######################################
-var minigame = [Callable(self, "_no_game"),Callable(self, "_math_game")]
+var minigame = [Callable(self, "_simon_game"),Callable(self, "_math_game")]
 var mini_win : bool = true
 
 func _minigame():
@@ -119,6 +124,7 @@ func _math_game():
 				while math_number1 % math_number2 != 0:
 					math_number1 = randi_range(1, 99)
 					math_number2 = randi_range(1, 99)
+				@warning_ignore("integer_division")
 				math_result = math_number1 / math_number2
 				$Time_Display/Time_Label.text = (str(math_number1) + " / " + str(math_number2))
 		math_number1 = null
@@ -206,3 +212,42 @@ func _on_button_minus_pressed() -> void:
 	if minigame_type == 1:
 		math_guess = math_guess + "-"
 		$Pin_Display/Pin_Label.text = math_guess
+
+## SIMON SAYS GAME
+########################################################
+var simon_game_on: bool = false
+var simon_color: int 
+var simon_order: String # Combined String of generated colors
+var simon_wait: bool #Stop picking colors, wait for input
+var simon_guess: String #User-Entered String to compare against simon_order
+var simon_continue: bool = true#Select a color after this one? Disabled by picking 5th rand option
+var simon_timer_freeze: bool #Freeze timer while game generates colors
+
+func _simon_game():
+	pass
+	
+func _simon_generator():
+	simon_color = randi_range(0, 4)
+	match simon_color:
+		0: #Blue
+			simon_order += "0"
+			$Simon_Game/SimonBlue/SimonBlueLight.z_index = 2
+		1: #Greens
+			simon_order += "1"
+			$Simon_Game/SimonGreen/SimonGreen.z_index = 2
+		2: #Red
+			simon_order += "2"
+			$Simon_Game/SimonRed/SimonRed.z_index = 2
+		3: #Yellow
+			simon_order += "3"
+			$Simon_Game/SimonYellow/SimonYellowLight.z_index = 2
+		4: #TERMINATE
+			simon_continue = false
+	$Simon_Game/Simon_Timer.start(1.0)
+
+
+func _on_simon_timer_timeout() -> void:
+	$Simon_Game/SimonBlue/SimonBlueLight.z_index = 0
+	$Simon_Game/SimonGreen/SimonGreen.z_index = 0
+	$Simon_Game/SimonRed/SimonRed.z_index = 0
+	$Simon_Game/SimonYellow/SimonYellowLight.z_index = 0
