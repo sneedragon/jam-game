@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=36 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
+[ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
 [ext_resource type="Texture2D" uid="uid://cvmepwduntblv" path="res://Assets/Red_Button.png" id="3_tbnv7"]
 [ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_13vu7"]
@@ -67,11 +68,29 @@ texture = ExtResource("14_j3e6h")
 texture = ExtResource("15_mnhjr")
 
 [node name="Main" type="Node2D"]
-position = Vector2(8, 72)
+position = Vector2(208, 176)
 script = ExtResource("1_3ajsl")
 
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.830335, 0.830335, 0.830335, 1)
+z_index = -10
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -184.0
+offset_right = 1392.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture = ExtResource("2_tu8mm")
+
 [node name="Bombshell_Sprite" type="Sprite2D" parent="."]
-z_index = -55
+z_index = -10
+texture_filter = 2
 position = Vector2(576, 136)
 scale = Vector2(1.898, 1.73667)
 texture = ExtResource("2_uh4rl")
@@ -313,7 +332,7 @@ scale = Vector2(0.2, 0.25)
 texture = ExtResource("15_p2uow")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(568, 248)
+position = Vector2(568, 264)
 
 [node name="Audio" type="Node2D" parent="."]
 
