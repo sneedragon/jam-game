@@ -18,6 +18,7 @@ func _process(delta):
 	if time_remaining > 0:
 		time_remaining -= delta
 		minigame_time -= delta
+		global.total_time += delta
 		if mini_timer > 0 and minigame_type == 1:
 			mini_timer = max(0, mini_timer - delta )
 			$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
@@ -29,7 +30,7 @@ func _process(delta):
 			
 		elif minigame_on == false:
 			$Time_Display/Time_Label.text = (format_time(time_remaining))
-			if minigame_time < 3 and minigame_time > 2:
+			if minigame_time < 2 and minigame_time > 1:
 				$Pin_Display/Pin_Label.text = "READY"
 			
 		elif minigame_on == true:
@@ -122,6 +123,7 @@ func _math_game():
 				$Time_Display/Time_Label.text = (str(math_number1) + " / " + str(math_number2))
 		math_number1 = null
 		math_number2 = null
+		$Pin_Display/Pin_Label.text = "SOLVE"
 	if math_guess == str(math_result):
 		mini_win = true # WINNING
 		print(str(math_result))
@@ -129,7 +131,7 @@ func _math_game():
 		math_guess = ""
 		math_result = -100
 		_mini_reset()
-	elif mini_timer == 0:
+	elif mini_timer == 0 or math_guess.length() >= 5:
 		mini_win = false # LOSING
 		print(math_guess)
 		print(str(math_result))
