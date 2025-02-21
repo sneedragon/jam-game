@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=46 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dmla75skjwwli" path="res://Assets/DiodeOff.png" id="15_p2uow"]
 [ext_resource type="AudioStream" uid="uid://f5wpjxjrv20q" path="res://Assets/wrong.ogg" id="17_gxpwt"]
 [ext_resource type="AudioStream" uid="uid://b5f7t1v4s0tey" path="res://Assets/correct.ogg" id="18_boxao"]
+[ext_resource type="Texture2D" uid="uid://cq13pvaem4m3m" path="res://Assets/DiodeOn.png" id="19_nh8io"]
 [ext_resource type="AudioStream" uid="uid://cukolmocybkj0" path="res://Assets/click.ogg" id="19_saaja"]
 [ext_resource type="Texture2D" uid="uid://ccr8uw8k2yqat" path="res://Assets/simon_blue.png" id="21_hk1da"]
 [ext_resource type="Texture2D" uid="uid://dvnfnqvjtmbc3" path="res://Assets/simon_blue_light.png" id="22_5lsa8"]
@@ -328,20 +329,39 @@ position = Vector2(96, 208)
 scale = Vector2(-0.198, 0.25)
 texture = ExtResource("15_p2uow")
 
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff"]
+z_index = -100
+position = Vector2(-5.81741e-05, 0)
+texture = ExtResource("19_nh8io")
+
 [node name="DiodeOff2" type="Sprite2D" parent="Diodes"]
 position = Vector2(96, 400)
 scale = Vector2(-0.198, 0.25)
 texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff2"]
+z_index = -100
+position = Vector2(5.34058e-05, 0)
+texture = ExtResource("19_nh8io")
 
 [node name="DiodeOff3" type="Sprite2D" parent="Diodes"]
 position = Vector2(1056, 400)
 scale = Vector2(0.2, 0.25)
 texture = ExtResource("15_p2uow")
 
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff3"]
+z_index = -100
+texture = ExtResource("19_nh8io")
+
 [node name="DiodeOff4" type="Sprite2D" parent="Diodes"]
 position = Vector2(1056, 208)
 scale = Vector2(0.2, 0.25)
 texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff4"]
+modulate = Color(1, 1, 1, 0.580392)
+z_index = -100
+texture = ExtResource("19_nh8io")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(568, 264)
@@ -361,7 +381,7 @@ stream = ExtResource("19_saaja")
 volume_db = 6.611
 
 [node name="Simon_Game" type="Node2D" parent="."]
-position = Vector2(790, 317)
+position = Vector2(773, 409)
 
 [node name="Simon_Timer" type="Timer" parent="Simon_Game"]
 one_shot = true
@@ -383,10 +403,10 @@ z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -37.0
-offset_top = -32.0
-offset_right = -37.0
-offset_bottom = -32.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 

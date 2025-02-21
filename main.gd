@@ -137,6 +137,7 @@ func _math_game():
 		mini_win = true # WINNING
 		print(str(math_result))
 		print(math_guess)
+		time_remaining += math_guess.length()
 		math_guess = ""
 		math_result = -100
 		_mini_reset()
@@ -279,10 +280,12 @@ func _simon_color_reset():
 	$Simon_Game/SimonGreen/SimonGreenLight.z_index = -1
 	$Simon_Game/SimonRed/SimonRedLight.z_index = -1
 	$Simon_Game/SimonYellow/SimonYellowLight.z_index = -1	
+	$Time_Display/Time_Label.text = ""
 	
 func _simon_guess(): #Check if entered combination matches
 	if simon_guess == simon_order:
 		mini_win = true
+		time_remaining += simon_order.length()
 		_simon_reset()
 	elif mini_timer == 0 or simon_guess.length() > simon_order.length():
 		mini_win = false
