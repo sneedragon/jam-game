@@ -1,10 +1,10 @@
+AudioStreamPlayer2D
 PointLight2D
 Timer
 Button
 Node2D
 RichTextLabel
 TextureRect
-AudioStreamPlayer2D
 Camera2D
 Label
 Control
@@ -12,4 +12,3 @@ ColorRect
 Sprite2D
 Polygon2D
 SubViewport
-DirectionalLight3D

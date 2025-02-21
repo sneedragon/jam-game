@@ -10,6 +10,11 @@ var lives: int = 5
 @onready var sfx_wrong: AudioStreamPlayer2D = $Audio/sfx_wrong
 @onready var sfx_correct: AudioStreamPlayer2D = $Audio/sfx_correct
 @onready var sfx_click: AudioStreamPlayer2D = $Audio/sfx_click
+@onready var sfx_beep_blue: AudioStreamPlayer2D = $Simon_Game/sfx_beep_blue
+@onready var sfx_beep_green: AudioStreamPlayer2D = $Simon_Game/sfx_beep_green
+@onready var sfx_beep_red: AudioStreamPlayer2D = $Simon_Game/sfx_beep_red
+@onready var sfx_beep_yellow: AudioStreamPlayer2D = $Simon_Game/sfx_beep_yellow
+
 
 func _ready():
 	$Time_Display/Time_Label.text = (format_time(time_remaining))
@@ -72,7 +77,7 @@ var mini_win : bool = true
 
 func _minigame():
 	if minigame_type == null:
-		minigame_type = randi_range(0,0) #increase range for more minigame types
+		minigame_type = randi_range(0,1) #increase range for more minigame types
 		print(minigame_type)
 		mini_timer = 10
 		minigame[minigame_type].call()
@@ -141,7 +146,7 @@ func _math_game():
 		math_guess = ""
 		math_result = -100
 		_mini_reset()
-	elif mini_timer == 0 or math_guess.length() >= 5:
+	elif mini_timer == 0 or math_guess.length() >= 5 or math_guess.length() > (str(math_result)).length():
 		mini_win = false # LOSING
 		print(math_guess)
 		print(str(math_result))
@@ -245,18 +250,23 @@ func _simon_generator():
 				simon_order += "0"
 				$Simon_Game/SimonBlue/SimonBlueLight.z_index = 2
 				$Time_Display/Time_Label.text = "BLUE"
+				sfx_beep_blue.play()
 			1: #Greens
 				simon_order += "1"
 				$Simon_Game/SimonGreen/SimonGreenLight.z_index = 2
 				$Time_Display/Time_Label.text = "GREEN"
+				sfx_beep_green.play()
+				
 			2: #Red
 				simon_order += "2"
 				$Simon_Game/SimonRed/SimonRedLight.z_index = 2
 				$Time_Display/Time_Label.text = "RED"
+				sfx_beep_red.play()
 			3: #Yellow
 				simon_order += "3"
 				$Simon_Game/SimonYellow/SimonYellowLight.z_index = 2
 				$Time_Display/Time_Label.text = "YELLOW"
+				sfx_beep_yellow.play()
 			4: #TERMINATE
 				simon_continue = false
 				$Time_Display/Time_Label.text = "ENTER"
@@ -306,21 +316,25 @@ func _on_ss_button_b_pressed() -> void:
 		simon_guess += "0"
 		_simon_color_reset()
 		$Simon_Game/SimonBlue/SimonBlueLight.z_index = 2
+		sfx_beep_blue.play()
 		
 func _on_ss_button_g_pressed() -> void:
 	if simon_wait == true:
 		simon_guess += "1"
 		_simon_color_reset()
 		$Simon_Game/SimonGreen/SimonGreenLight.z_index = 2
+		sfx_beep_green.play()
 		
 func _on_ss_button_r_pressed() -> void:
 	if simon_wait == true:
 		simon_guess += "2"
 		_simon_color_reset()
 		$Simon_Game/SimonRed/SimonRedLight.z_index = 2
+		sfx_beep_green.play()
 		
 func _on_ss_button_y_pressed() -> void:
 	if simon_wait == true:
 		simon_guess += "3"
 		_simon_color_reset()
 		$Simon_Game/SimonYellow/SimonYellowLight.z_index = 2
+		sfx_beep_yellow.play()
