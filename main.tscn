@@ -1,13 +1,13 @@
-[gd_scene load_steps=46 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=47 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
 [ext_resource type="Texture2D" uid="uid://dswtauhcl5w8n" path="res://Assets/bombshell.png" id="2_uh4rl"]
 [ext_resource type="Texture2D" uid="uid://cvmepwduntblv" path="res://Assets/Red_Button.png" id="3_tbnv7"]
 [ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_13vu7"]
+[ext_resource type="Texture2D" uid="uid://dpyr28jbcun2w" path="res://Assets/TNT.png" id="4_dqbta"]
 [ext_resource type="Texture2D" uid="uid://dfv8oh0sjleia" path="res://Assets/PinPad_0.png" id="5_0bxms"]
 [ext_resource type="Texture2D" uid="uid://dgdcy4qph3gsu" path="res://Assets/PinPad_1.png" id="6_0vg1c"]
-[ext_resource type="AudioStream" uid="uid://hba35blksvcn" path="res://Assets/metalpipe.ogg" id="6_c0r87"]
 [ext_resource type="Texture2D" uid="uid://d143ksobcakg6" path="res://Assets/PinPad_2.png" id="7_k2cwj"]
 [ext_resource type="Texture2D" uid="uid://byfkeh5cmycdt" path="res://Assets/PinPad_3.png" id="8_vo64u"]
 [ext_resource type="Texture2D" uid="uid://c6fv5q4tb8d2h" path="res://Assets/PinPad_4.png" id="9_8mtjc"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://68svxc2lh6td" path="res://Assets/simon_yellow.png" id="24_vr2c2"]
 [ext_resource type="Texture2D" uid="uid://clokq50j267uf" path="res://Assets/simon_red_light.png" id="26_dhyib"]
 [ext_resource type="Texture2D" uid="uid://ckbhlqs8b3uh1" path="res://Assets/simon_yellow_light.png" id="28_ifbbj"]
+[ext_resource type="AudioStream" uid="uid://cuc08fn8fudh0" path="res://Assets/beep.ogg" id="31_dpr0s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
 
@@ -105,6 +106,11 @@ position = Vector2(576, 136)
 scale = Vector2(1.898, 1.73667)
 texture = ExtResource("2_uh4rl")
 
+[node name="Tnt" type="Sprite2D" parent="Bombshell_Sprite"]
+position = Vector2(-2.37091, -110.269)
+scale = Vector2(0.643441, 0.550863)
+texture = ExtResource("4_dqbta")
+
 [node name="Snooze_Button" type="Button" parent="."]
 offset_left = 496.0
 offset_top = 336.0
@@ -134,9 +140,6 @@ theme_override_font_sizes/font_size = 50
 text = "ERROR!
 "
 horizontal_alignment = 1
-
-[node name="sfx_pipe" type="AudioStreamPlayer2D" parent="Time_Display/Time_Label"]
-stream = ExtResource("6_c0r87")
 
 [node name="ColorRect" type="ColorRect" parent="Time_Display"]
 z_index = -1
@@ -399,6 +402,7 @@ z_index = -1
 texture = ExtResource("22_5lsa8")
 
 [node name="SS_Button_B" type="Button" parent="Simon_Game/SimonBlue"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -420,6 +424,7 @@ z_index = -1
 texture = ExtResource("24_28oht")
 
 [node name="SS_Button_G" type="Button" parent="Simon_Game/SimonGreen"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -441,6 +446,7 @@ z_index = -1
 texture = ExtResource("26_dhyib")
 
 [node name="SS_Button_R" type="Button" parent="Simon_Game/SimonRed"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -462,6 +468,7 @@ z_index = -1
 texture = ExtResource("28_ifbbj")
 
 [node name="SS_Button_Y" type="Button" parent="Simon_Game/SimonYellow"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -472,6 +479,25 @@ offset_right = -40.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="sfx_beep_blue" type="AudioStreamPlayer2D" parent="Simon_Game"]
+stream = ExtResource("31_dpr0s")
+volume_db = 10.0
+
+[node name="sfx_beep_green" type="AudioStreamPlayer2D" parent="Simon_Game"]
+stream = ExtResource("31_dpr0s")
+volume_db = 10.0
+pitch_scale = 1.1
+
+[node name="sfx_beep_red" type="AudioStreamPlayer2D" parent="Simon_Game"]
+stream = ExtResource("31_dpr0s")
+volume_db = 10.0
+pitch_scale = 1.2
+
+[node name="sfx_beep_yellow" type="AudioStreamPlayer2D" parent="Simon_Game"]
+stream = ExtResource("31_dpr0s")
+volume_db = 10.0
+pitch_scale = 1.3
 
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button1" to="." method="_on_button_1_pressed"]
