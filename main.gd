@@ -8,6 +8,7 @@ var mini_timer : float = 0 #Time to finish minigame
 var minigame_type = null
 var lives: int = 5
 var game_over : bool = false
+@onready var sfx_janken: AudioStreamPlayer2D = $Janken_Game/sfx_janken
 @onready var sfx_wrong: AudioStreamPlayer2D = $Audio/sfx_wrong
 @onready var sfx_correct: AudioStreamPlayer2D = $Audio/sfx_correct
 @onready var sfx_click: AudioStreamPlayer2D = $Audio/sfx_click
@@ -87,10 +88,11 @@ var mini_win : bool = true
 
 func _minigame():
 	if minigame_type == null:
-		minigame_type = randi_range(2,2) #increase range for more minigame types
+		minigame_type = randi_range(0,2) #increase range for more minigame types
 		print(minigame_type)
 		mini_timer = 10
 		_diodes()
+		sfx_janken.play()
 		minigame[minigame_type].call()
 		
 func _mini_reset():
@@ -99,8 +101,7 @@ func _mini_reset():
 		sfx_correct.play()
 	else: #LOSE GAME
 		time_remaining = time_remaining / 2
-		if minigame_type != 2:
-			lives -= 1
+		lives -= 1
 		$Life_Label.text = str(lives)
 		$Pin_Display/Pin_Label.text = "LOSER"
 		sfx_wrong.play()
@@ -250,8 +251,8 @@ func _simon_game():
 	simon_wait = false
 	simon_freeze = true
 	$Pin_Display/Pin_Label.text = "SIMON"
-	_simon_generator()
-	
+	$Simon_Game/Simon_First_Timer.start(1)
+
 func _simon_generator():
 	if simon_order == "":
 		simon_color = randi_range(0, 3)
@@ -379,27 +380,35 @@ var janken_player: int
 var janken_guess : bool = false
 var janken_display_words = ["ROCK", "PAPER", "SCISSOR"]
 var janken_word : String
+var janken_rounds: int = 0
+var janken_draw = false
 
-func _janken():
-	$Pin_Display/Pin_Label.text = "JANKEN"
-	$Janken_Game/Janken_Display_Timer.start(0.5)
+func _janken():	
 	mini_timer = 5
+	$Pin_Display/Pin_Label.text = "JANKEN"
 	_janken_display()
+	$Janken_Game/Janken_Display_Timer.start(0.5)
 	janken_guess = true
 
 func _janken_guess():
-	if mini_timer == 0:
+	if mini_timer <= 0:
 		mini_win = false
 		_janken_reset()
 		_mini_reset()
 
 func _janken_reset():
 	janken_guess = false
+	janken_rounds = 1
+	
 func _janken_check():
+	_diodes()
+	sfx_janken.play()
 	print(janken_cpu)
 	print(janken_player)
+	janken_guess = false
 	if (janken_cpu == 0 and janken_player == 1) or (janken_cpu == 1 and janken_player == 2) or (janken_cpu == 2 and janken_player == 0):
 		mini_win = true
+		time_remaining += janken_rounds
 		_janken_reset()
 		_mini_reset()
 	elif (janken_cpu == 0 and janken_player == 2) or (janken_cpu == 1 and janken_player == 0) or (janken_cpu == 2 and janken_player == 1):
@@ -407,30 +416,44 @@ func _janken_check():
 		_janken_reset()
 		_mini_reset()
 	else:
-		_janken_reset()
+		janken_rounds += 1
+		sfx_janken.play()
+		janken_draw = true
+		$Time_Display/Time_Label.text = "DRAW"
+		$Janken_Game/Janken_Draw_Timer.start(1)
 		_janken()
 		
 func _on_rock_button_pressed() -> void:
+	sfx_click.play()
 	if janken_guess == true:
 		janken_player = 0
 		_janken_check()
 
 func _on_paper_button_pressed() -> void:
+	sfx_click.play()
 	if janken_guess == true:
 		janken_player = 1
 		_janken_check()
 	
 func _on_scissors_button_pressed() -> void:
+	sfx_click.play()
 	if janken_guess == true:
 		janken_player = 2
 		_janken_check()
 
 func _janken_display():
 	janken_cpu = randi_range(0, 2)
-	janken_word = janken_display_words[janken_cpu]
-	$Time_Display/Time_Label.text = janken_word
+	if janken_draw == false:
+		janken_word = janken_display_words[janken_cpu]
+		$Time_Display/Time_Label.text = janken_word
 	
 func _on_janken_display_timer_timeout() -> void:
 		_janken_display()
-		if mini_timer > 0.5:
+		if mini_timer > 0.5 and janken_guess == true:
 			$Janken_Game/Janken_Display_Timer.start(0.5)
+
+func _on_simon_first_timer_timeout() -> void:
+	_simon_generator()
+
+func _on_janken_draw_timer_timeout() -> void:
+	janken_draw = false

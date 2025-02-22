@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg4lt5lg2wcig"]
+[gd_scene load_steps=7 format=3 uid="uid://cg4lt5lg2wcig"]
 
 [ext_resource type="FontFile" uid="uid://dkj87jhqfrl0g" path="res://Fonts/digital-7 (italic).ttf" id="1_iwy8d"]
 [ext_resource type="Script" path="res://game_over.gd" id="1_wm2r2"]
 [ext_resource type="AudioStream" uid="uid://hba35blksvcn" path="res://Assets/metalpipe.ogg" id="2_ioyev"]
+[ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_0snu3"]
+[ext_resource type="Texture2D" uid="uid://dv841x3d4hxrx" path="res://Assets/StartButton.png" id="5_ex43j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6pmd"]
+texture = ExtResource("5_ex43j")
 
 [node name="Game_Over" type="Node2D"]
 script = ExtResource("1_wm2r2")
@@ -32,10 +37,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 560.0
-offset_top = 320.0
-offset_right = 624.0
-offset_bottom = 332.0
+offset_left = 456.0
+offset_top = 128.0
+offset_right = 735.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_iwy8d")
@@ -44,3 +49,43 @@ bbcode_enabled = true
 text = "GAME OVER"
 fit_content = true
 autowrap_mode = 0
+
+[node name="Retry" type="Button" parent="."]
+z_index = 10
+offset_left = 432.0
+offset_top = 304.0
+offset_right = 768.0
+offset_bottom = 400.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0snu3")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
+text = "RETRY"
+
+[node name="Menu" type="Button" parent="."]
+z_index = 10
+offset_left = 432.0
+offset_top = 448.0
+offset_right = 768.0
+offset_bottom = 544.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0snu3")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
+text = "BACK TO TITLE"
+
+[node name="Exit" type="Button" parent="."]
+z_index = 10
+offset_left = 432.0
+offset_top = 584.0
+offset_right = 768.0
+offset_bottom = 680.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0snu3")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
+text = "GIVE UP"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
