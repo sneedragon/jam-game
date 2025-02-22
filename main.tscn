@@ -532,6 +532,23 @@ stream = ExtResource("31_dpr0s")
 volume_db = 10.0
 pitch_scale = 1.3
 
+[node name="Janken_Game" type="Node2D" parent="."]
+
+[node name="Rock_Button" type="Button" parent="Janken_Game"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Paper_Button" type="Button" parent="Janken_Game"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Scissors_Button" type="Button" parent="Janken_Game"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Janken_Display_Timer" type="Timer" parent="Janken_Game"]
+one_shot = true
+
 [connection signal="timeout" from="End_timer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Diodes/Diode_Timer" to="." method="_on_diode_timer_timeout"]
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
@@ -552,3 +569,7 @@ pitch_scale = 1.3
 [connection signal="pressed" from="Simon_Game/SimonGreen/SS_Button_G" to="." method="_on_ss_button_g_pressed"]
 [connection signal="pressed" from="Simon_Game/SimonRed/SS_Button_R" to="." method="_on_ss_button_r_pressed"]
 [connection signal="pressed" from="Simon_Game/SimonYellow/SS_Button_Y" to="." method="_on_ss_button_y_pressed"]
+[connection signal="pressed" from="Janken_Game/Rock_Button" to="." method="_on_rock_button_pressed"]
+[connection signal="pressed" from="Janken_Game/Paper_Button" to="." method="_on_paper_button_pressed"]
+[connection signal="pressed" from="Janken_Game/Scissors_Button" to="." method="_on_scissors_button_pressed"]
+[connection signal="timeout" from="Janken_Game/Janken_Display_Timer" to="." method="_on_janken_display_timer_timeout"]

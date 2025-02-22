@@ -1,11 +1,11 @@
 Timer
 Button
+Node2D
 ColorRect
 Label
 TextureRect
 AudioStreamPlayer2D
 PointLight2D
-Node2D
 RichTextLabel
 Camera2D
 Control
