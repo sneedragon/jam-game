@@ -1,7 +1,7 @@
 extends Node2D
 
 var minigame_on : bool = false #Is Minigame running?
-var countdown_time : float = 10.0  # Countdown time in seconds
+var countdown_time : float = 20.0  # Countdown time in seconds
 var time_remaining : float = countdown_time
 var minigame_time : float = 5 #Time until next Minigame
 var mini_timer : float = 0 #Time to finish minigame
@@ -23,8 +23,8 @@ func _ready():
 	
 func _process(delta):
 	if game_over == false:
-		if time_remaining > 0 and lives > 0:
-			time_remaining -= delta
+		if time_remaining != 0 and lives > 0:
+			time_remaining = max(0, time_remaining - delta )
 			minigame_time -= delta
 			global.total_time += delta
 			if mini_timer > 0:

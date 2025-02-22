@@ -1,6 +1,4 @@
-res://main.gd
+res://title_screen.tscn
 res://main.tscn
 res://game_over.tscn
-res://title_screen.gd
-res://title_screen.tscn
-res://game_over.gd
+res://main.gd
