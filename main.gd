@@ -7,6 +7,7 @@ var minigame_time : float = 5 #Time until next Minigame
 var mini_timer : float = 0 #Time to finish minigame
 var minigame_type = null
 var lives: int = 5
+var game_over : bool = false
 @onready var sfx_wrong: AudioStreamPlayer2D = $Audio/sfx_wrong
 @onready var sfx_correct: AudioStreamPlayer2D = $Audio/sfx_correct
 @onready var sfx_click: AudioStreamPlayer2D = $Audio/sfx_click
@@ -20,39 +21,43 @@ func _ready():
 	$Time_Display/Time_Label.text = (format_time(time_remaining))
 	
 func _process(delta):
-	if time_remaining > 0 and lives > 0:
-		time_remaining -= delta
-		minigame_time -= delta
-		global.total_time += delta
-		if mini_timer > 0:
-			if simon_freeze == false:
-				mini_timer = max(0, mini_timer - delta )
-			if minigame_type == 1:
-				$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
-				$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
-				_math_game()
-			elif minigame_type == 0:
-				$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
-				$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
-				if simon_wait == true:
-					_simon_guess()
-		elif minigame_time < 0 and minigame_on == false:
-			minigame_on = true
-			_minigame()
-			
-		elif minigame_on == false:
-			$Time_Display/Time_Label.text = (format_time(time_remaining))
-			if minigame_time < 2 and minigame_time > 1:
-				$Pin_Display/Pin_Label.text = "READY"
-			
-		elif minigame_on == true:
-			minigame_time = 5
-			
-			
-	else:
-		$Time_Display/Time_Label.text = ("00:00:00")  # Timer finished
-		$End_timer.start(1)
-		
+	if game_over == false:
+		if time_remaining > 0 and lives > 0:
+			time_remaining -= delta
+			minigame_time -= delta
+			global.total_time += delta
+			if mini_timer > 0:
+				if simon_freeze == false:
+					mini_timer = max(0, mini_timer - delta )
+				if minigame_type == 1:
+					$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
+					$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
+					_math_game()
+				elif minigame_type == 0:
+					$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
+					$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
+					if simon_wait == true:
+						_simon_guess()
+			elif minigame_time < 0 and minigame_on == false:
+				minigame_on = true
+				_minigame()
+				
+			elif minigame_on == false:
+				$Time_Display/Time_Label.text = (format_time(time_remaining))
+				if minigame_time < 2 and minigame_time > 1:
+					$Pin_Display/Pin_Label.text = "READY"
+				
+			elif minigame_on == true:
+				minigame_time = 5
+				
+		else:
+			game_over = true
+			_game_over()
+	
+func _game_over():
+	$Time_Display/Time_Label.text = "00:00:00"
+	_diodes_light()
+	$End_timer.start(1)
 # converts time into clock format
 func format_time(seconds: float) -> String:
 	@warning_ignore("integer_division")
@@ -359,4 +364,4 @@ func _on_diode_timer_timeout() -> void:
 
 
 func _on_end_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://game_over.tscn")
