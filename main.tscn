@@ -217,7 +217,7 @@ scale = Vector2(1.898, 1.73667)
 texture = ExtResource("2_uh4rl")
 
 [node name="Tnt" type="Sprite2D" parent="Bombshell_Sprite"]
-position = Vector2(-2.37091, -110.269)
+position = Vector2(-4.21496, -110.556)
 scale = Vector2(0.643441, 0.550863)
 texture = ExtResource("4_dqbta")
 
@@ -681,7 +681,6 @@ volume_db = 5.0
 pitch_scale = 4.0
 
 [node name="Janken_Draw_Timer" type="Timer" parent="Janken_Game"]
-one_shot = true
 
 [connection signal="timeout" from="End_timer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Diodes/Diode_Timer" to="." method="_on_diode_timer_timeout"]
@@ -708,4 +707,3 @@ one_shot = true
 [connection signal="pressed" from="Janken_Game/Paper_Button" to="." method="_on_paper_button_pressed"]
 [connection signal="pressed" from="Janken_Game/Scissors_Button" to="." method="_on_scissors_button_pressed"]
 [connection signal="timeout" from="Janken_Game/Janken_Display_Timer" to="." method="_on_janken_display_timer_timeout"]
-[connection signal="timeout" from="Janken_Game/Janken_Draw_Timer" to="." method="_on_janken_draw_timer_timeout"]
