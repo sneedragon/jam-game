@@ -20,7 +20,7 @@ func _ready():
 	$Time_Display/Time_Label.text = (format_time(time_remaining))
 	
 func _process(delta):
-	if time_remaining > 0:
+	if time_remaining > 0 and lives > 0:
 		time_remaining -= delta
 		minigame_time -= delta
 		global.total_time += delta
@@ -51,7 +51,7 @@ func _process(delta):
 			
 	else:
 		$Time_Display/Time_Label.text = ("00:00:00")  # Timer finished
-		get_tree().change_scene_to_file("res://game_over.tscn")
+		$End_timer.start(1)
 		
 # converts time into clock format
 func format_time(seconds: float) -> String:
@@ -68,7 +68,7 @@ func format_seconds(seconds: float) -> String:
 func _on_button_pressed() -> void:
 	sfx_click.play()
 	if time_remaining > 0:
-		time_remaining += 0.5
+		time_remaining += 0.25
 	
 ##Minigame Engine
 ######################################
@@ -80,24 +80,26 @@ func _minigame():
 		minigame_type = randi_range(0,1) #increase range for more minigame types
 		print(minigame_type)
 		mini_timer = 10
+		_diodes()
 		minigame[minigame_type].call()
 		
 func _mini_reset():
 	if mini_win == true: #WIN GAME
 		$Pin_Display/Pin_Label.text = "CORRECT"
 		sfx_correct.play()
-		#TODO win action
 	else: #LOSE GAME
 		time_remaining = time_remaining / 2
-		lives =- 1
+		lives -= 1
+		$Life_Label.text = str(lives)
 		$Pin_Display/Pin_Label.text = "LOSER"
 		sfx_wrong.play()
-		#TODO lose action
-	minigame_time = 10
+		
+	minigame_time = 5
 	minigame_on = false
 	minigame_type = null
 	mini_win = true
 	mini_timer = 0
+	_diodes()
 	$Time_Display/Time_Label.text = ""
 	$Time_Display/Small_Time_Label.text = ""
 	$Mini_Display/Mini_Label.text = ""
@@ -338,3 +340,23 @@ func _on_ss_button_y_pressed() -> void:
 		_simon_color_reset()
 		$Simon_Game/SimonYellow/SimonYellowLight.z_index = 2
 		sfx_beep_yellow.play()
+		
+func _diodes_light():
+	$Diodes/DiodeOff/DiodeOn.z_index = 5
+	$Diodes/DiodeOff2/DiodeOn.z_index = 5
+	$Diodes/DiodeOff3/DiodeOn.z_index = 5
+	$Diodes/DiodeOff4/DiodeOn.z_index = 5
+	
+func _diodes():
+	_diodes_light()
+	$Diodes/Diode_Timer.start(0.5)
+
+func _on_diode_timer_timeout() -> void:
+	$Diodes/DiodeOff/DiodeOn.z_index = -99
+	$Diodes/DiodeOff2/DiodeOn.z_index = -99
+	$Diodes/DiodeOff3/DiodeOn.z_index = -99
+	$Diodes/DiodeOff4/DiodeOn.z_index = -99
+
+
+func _on_end_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://main.tscn")

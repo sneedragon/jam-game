@@ -99,6 +99,37 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 texture = ExtResource("2_tu8mm")
 
+[node name="Life_Label" type="Label" parent="."]
+offset_left = 824.0
+offset_top = 136.0
+offset_right = 874.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_13vu7")
+theme_override_font_sizes/font_size = 50
+text = "5"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Life_Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -7.0
+offset_right = -15.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0.0588235, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(568, 264)
+
+[node name="End_timer" type="Timer" parent="."]
+
 [node name="Bombshell_Sprite" type="Sprite2D" parent="."]
 z_index = -10
 texture_filter = 2
@@ -110,6 +141,51 @@ texture = ExtResource("2_uh4rl")
 position = Vector2(-2.37091, -110.269)
 scale = Vector2(0.643441, 0.550863)
 texture = ExtResource("4_dqbta")
+
+[node name="Diodes" type="Node2D" parent="."]
+
+[node name="DiodeOff" type="Sprite2D" parent="Diodes"]
+position = Vector2(96, 208)
+scale = Vector2(-0.198, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff"]
+z_index = -100
+position = Vector2(-5.81741e-05, 0)
+texture = ExtResource("19_nh8io")
+
+[node name="DiodeOff2" type="Sprite2D" parent="Diodes"]
+position = Vector2(96, 400)
+scale = Vector2(-0.198, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff2"]
+z_index = -100
+position = Vector2(5.34058e-05, 0)
+texture = ExtResource("19_nh8io")
+
+[node name="DiodeOff3" type="Sprite2D" parent="Diodes"]
+position = Vector2(1056, 400)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff3"]
+z_index = -100
+texture = ExtResource("19_nh8io")
+
+[node name="DiodeOff4" type="Sprite2D" parent="Diodes"]
+position = Vector2(1056, 208)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("15_p2uow")
+
+[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff4"]
+modulate = Color(1, 1, 1, 0.580392)
+z_index = -100
+texture = ExtResource("19_nh8io")
+
+[node name="Diode_Timer" type="Timer" parent="Diodes"]
+wait_time = 0.2
+one_shot = true
 
 [node name="Snooze_Button" type="Button" parent="."]
 offset_left = 496.0
@@ -165,39 +241,6 @@ offset_right = 203.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("4_13vu7")
 
-[node name="Pin_Display" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 224.0
-offset_top = 208.0
-offset_right = 348.0
-offset_bottom = 248.0
-
-[node name="Pin_Label" type="Label" parent="Pin_Display"]
-layout_mode = 1
-offset_left = 20.0
-offset_right = 145.0
-offset_bottom = 37.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_13vu7")
-theme_override_font_sizes/font_size = 50
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Pin_Display"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -7.0
-offset_right = 6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
-color = Color(0, 0.0588235, 0, 1)
-
 [node name="Mini_Display" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -226,6 +269,39 @@ offset_left = -5.0
 offset_top = -7.0
 offset_right = -15.0
 offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0.0588235, 0, 1)
+
+[node name="Pin_Display" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 208.0
+offset_right = 348.0
+offset_bottom = 248.0
+
+[node name="Pin_Label" type="Label" parent="Pin_Display"]
+layout_mode = 1
+offset_left = 20.0
+offset_right = 145.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_13vu7")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Pin_Display"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 6.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
@@ -324,50 +400,6 @@ offset_top = 144.0
 offset_right = 117.0
 offset_bottom = 189.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_0kcpp")
-
-[node name="Diodes" type="Node2D" parent="."]
-
-[node name="DiodeOff" type="Sprite2D" parent="Diodes"]
-position = Vector2(96, 208)
-scale = Vector2(-0.198, 0.25)
-texture = ExtResource("15_p2uow")
-
-[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff"]
-z_index = -100
-position = Vector2(-5.81741e-05, 0)
-texture = ExtResource("19_nh8io")
-
-[node name="DiodeOff2" type="Sprite2D" parent="Diodes"]
-position = Vector2(96, 400)
-scale = Vector2(-0.198, 0.25)
-texture = ExtResource("15_p2uow")
-
-[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff2"]
-z_index = -100
-position = Vector2(5.34058e-05, 0)
-texture = ExtResource("19_nh8io")
-
-[node name="DiodeOff3" type="Sprite2D" parent="Diodes"]
-position = Vector2(1056, 400)
-scale = Vector2(0.2, 0.25)
-texture = ExtResource("15_p2uow")
-
-[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff3"]
-z_index = -100
-texture = ExtResource("19_nh8io")
-
-[node name="DiodeOff4" type="Sprite2D" parent="Diodes"]
-position = Vector2(1056, 208)
-scale = Vector2(0.2, 0.25)
-texture = ExtResource("15_p2uow")
-
-[node name="DiodeOn" type="Sprite2D" parent="Diodes/DiodeOff4"]
-modulate = Color(1, 1, 1, 0.580392)
-z_index = -100
-texture = ExtResource("19_nh8io")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(568, 264)
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -499,6 +531,8 @@ stream = ExtResource("31_dpr0s")
 volume_db = 10.0
 pitch_scale = 1.3
 
+[connection signal="timeout" from="End_timer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="Diodes/Diode_Timer" to="." method="_on_diode_timer_timeout"]
 [connection signal="pressed" from="Snooze_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pinpad/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Pinpad/Button2" to="." method="_on_button_2_pressed"]
