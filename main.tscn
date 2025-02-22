@@ -129,6 +129,7 @@ color = Color(0, 0.0588235, 0, 1)
 position = Vector2(568, 264)
 
 [node name="End_timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Bombshell_Sprite" type="Sprite2D" parent="."]
 z_index = -10
