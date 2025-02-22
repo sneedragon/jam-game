@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=83 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
@@ -11,25 +11,36 @@
 [ext_resource type="Texture2D" uid="uid://d143ksobcakg6" path="res://Assets/PinPad_2.png" id="7_k2cwj"]
 [ext_resource type="Texture2D" uid="uid://byfkeh5cmycdt" path="res://Assets/PinPad_3.png" id="8_vo64u"]
 [ext_resource type="Texture2D" uid="uid://c6fv5q4tb8d2h" path="res://Assets/PinPad_4.png" id="9_8mtjc"]
+[ext_resource type="Texture2D" uid="uid://dgubm6m8ey4ap" path="res://Assets/PinPad_1On.png" id="9_vjbvp"]
 [ext_resource type="Texture2D" uid="uid://ix5quitadaus" path="res://Assets/PinPad_5.png" id="10_sxjc1"]
 [ext_resource type="Texture2D" uid="uid://8hjeuebc63ny" path="res://Assets/PinPad_6.png" id="11_4diib"]
+[ext_resource type="Texture2D" uid="uid://di1vh247ubcmm" path="res://Assets/PinPad_2On.png" id="11_5glls"]
 [ext_resource type="Texture2D" uid="uid://bjbi1p320osh8" path="res://Assets/PinPad_7.png" id="12_4wbri"]
+[ext_resource type="Texture2D" uid="uid://d2grsyr81vgh8" path="res://Assets/PinPad_3On.png" id="13_bo7q5"]
 [ext_resource type="Texture2D" uid="uid://dutna0x7kr4ro" path="res://Assets/PinPad_8.png" id="13_uy8t0"]
 [ext_resource type="Texture2D" uid="uid://beex76v7jbqht" path="res://Assets/PinPad_9.png" id="14_j3e6h"]
+[ext_resource type="Texture2D" uid="uid://dplkcb0vau3j4" path="res://Assets/PinPad_4On.png" id="15_fhki7"]
 [ext_resource type="Texture2D" uid="uid://chsb7pvkp7c5b" path="res://Assets/PinPad_Minus.png" id="15_mnhjr"]
 [ext_resource type="Texture2D" uid="uid://dmla75skjwwli" path="res://Assets/DiodeOff.png" id="15_p2uow"]
 [ext_resource type="AudioStream" uid="uid://f5wpjxjrv20q" path="res://Assets/wrong.ogg" id="17_gxpwt"]
+[ext_resource type="Texture2D" uid="uid://dqnt1hssfb8al" path="res://Assets/PinPad_5On.png" id="17_qsm4t"]
 [ext_resource type="AudioStream" uid="uid://b5f7t1v4s0tey" path="res://Assets/correct.ogg" id="18_boxao"]
+[ext_resource type="Texture2D" uid="uid://b177jw8tro4uv" path="res://Assets/PinPad_6On.png" id="19_85ewb"]
 [ext_resource type="Texture2D" uid="uid://cq13pvaem4m3m" path="res://Assets/DiodeOn.png" id="19_nh8io"]
 [ext_resource type="AudioStream" uid="uid://cukolmocybkj0" path="res://Assets/click.ogg" id="19_saaja"]
+[ext_resource type="Texture2D" uid="uid://dlwsvo820o12n" path="res://Assets/PinPad_7On.png" id="21_bjx4q"]
 [ext_resource type="Texture2D" uid="uid://ccr8uw8k2yqat" path="res://Assets/simon_blue.png" id="21_hk1da"]
 [ext_resource type="Texture2D" uid="uid://dvnfnqvjtmbc3" path="res://Assets/simon_blue_light.png" id="22_5lsa8"]
 [ext_resource type="Texture2D" uid="uid://y0hlncj5vxur" path="res://Assets/simon_green.png" id="22_i48ku"]
+[ext_resource type="Texture2D" uid="uid://hoeefuehghr2" path="res://Assets/PinPad_8On.png" id="23_gq3tf"]
 [ext_resource type="Texture2D" uid="uid://cuybhtntss12v" path="res://Assets/simon_red.png" id="23_rhdtl"]
 [ext_resource type="Texture2D" uid="uid://cdc6brra1eutw" path="res://Assets/simon_green_light.png" id="24_28oht"]
 [ext_resource type="Texture2D" uid="uid://68svxc2lh6td" path="res://Assets/simon_yellow.png" id="24_vr2c2"]
+[ext_resource type="Texture2D" uid="uid://dfxqpb6asvxmr" path="res://Assets/PinPad_9On.png" id="25_bhhoc"]
 [ext_resource type="Texture2D" uid="uid://clokq50j267uf" path="res://Assets/simon_red_light.png" id="26_dhyib"]
+[ext_resource type="Texture2D" uid="uid://dggbne3uyxjhc" path="res://Assets/PinPad_0On.png" id="27_vb3h1"]
 [ext_resource type="Texture2D" uid="uid://ckbhlqs8b3uh1" path="res://Assets/simon_yellow_light.png" id="28_ifbbj"]
+[ext_resource type="Texture2D" uid="uid://doeqewrxjuidu" path="res://Assets/PinPad_MinusOn.png" id="29_hhuv7"]
 [ext_resource type="AudioStream" uid="uid://cuc08fn8fudh0" path="res://Assets/beep.ogg" id="31_dpr0s"]
 [ext_resource type="Texture2D" uid="uid://dxebumiwaw2ri" path="res://Assets/RockOn.png" id="32_juqxd"]
 [ext_resource type="Texture2D" uid="uid://bt6e1ehb0ex8v" path="res://Assets/RockOff.png" id="33_kmh8d"]
@@ -38,48 +49,79 @@
 [ext_resource type="Texture2D" uid="uid://00kw0hok45d8" path="res://Assets/ScissorsOn.png" id="36_o4bg0"]
 [ext_resource type="Texture2D" uid="uid://r32dyfcq0spa" path="res://Assets/ScissorsOff.png" id="37_ddqw0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exewf"]
 texture = ExtResource("3_tbnv7")
 modulate_color = Color(1, 0.8582, 0.834183, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlb8u"]
 texture = ExtResource("3_tbnv7")
-modulate_color = Color(0.851769, 0.851769, 0.851769, 1)
+modulate_color = Color(0.74902, 0.74902, 0.74902, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlm54"]
 texture = ExtResource("3_tbnv7")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m17fm"]
+texture = ExtResource("9_vjbvp")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7os2"]
 texture = ExtResource("6_0vg1c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bi4k"]
+texture = ExtResource("11_5glls")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yn3t5"]
 texture = ExtResource("7_k2cwj")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwogu"]
+texture = ExtResource("13_bo7q5")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bc16l"]
 texture = ExtResource("8_vo64u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fh28v"]
+texture = ExtResource("15_fhki7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpfpw"]
 texture = ExtResource("9_8mtjc")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g38mn"]
+texture = ExtResource("17_qsm4t")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tjr1"]
 texture = ExtResource("10_sxjc1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qtxen"]
+texture = ExtResource("19_85ewb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cw8q3"]
 texture = ExtResource("11_4diib")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yqq74"]
+texture = ExtResource("21_bjx4q")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vi8w4"]
 texture = ExtResource("12_4wbri")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a81sm"]
+texture = ExtResource("23_gq3tf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vtyee"]
 texture = ExtResource("13_uy8t0")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jrwny"]
+texture = ExtResource("25_bhhoc")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlep1"]
 texture = ExtResource("14_j3e6h")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpxmj"]
+texture = ExtResource("27_vb3h1")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rc0j"]
 texture = ExtResource("5_0bxms")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upt3o"]
+texture = ExtResource("29_hhuv7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0kcpp"]
 texture = ExtResource("15_mnhjr")
@@ -87,17 +129,29 @@ texture = ExtResource("15_mnhjr")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mkak"]
 texture = ExtResource("32_juqxd")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1h2a"]
+texture = ExtResource("33_kmh8d")
+modulate_color = Color(0.74902, 0.74902, 0.74902, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ok7rd"]
 texture = ExtResource("33_kmh8d")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efvpe"]
 texture = ExtResource("34_rdk5j")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtkkg"]
+texture = ExtResource("35_j2qhx")
+modulate_color = Color(0.74902, 0.74902, 0.74902, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iav61"]
 texture = ExtResource("35_j2qhx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlley"]
 texture = ExtResource("36_o4bg0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugn60"]
+texture = ExtResource("37_ddqw0")
+modulate_color = Color(0.75, 0.75, 0.75, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewr5r"]
 texture = ExtResource("37_ddqw0")
@@ -217,7 +271,7 @@ offset_left = 496.0
 offset_top = 336.0
 offset_right = 660.0
 offset_bottom = 507.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0vwd7")
+focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_exewf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nlb8u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_jlm54")
@@ -346,6 +400,8 @@ offset_left = -48.0
 offset_top = 48.0
 offset_right = -3.0
 offset_bottom = 93.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_m17fm")
 theme_override_styles/normal = SubResource("StyleBoxTexture_n7os2")
 
 [node name="Button2" type="Button" parent="Pinpad"]
@@ -353,6 +409,8 @@ layout_mode = 0
 offset_top = 48.0
 offset_right = 45.0
 offset_bottom = 93.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_8bi4k")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yn3t5")
 
 [node name="Button3" type="Button" parent="Pinpad"]
@@ -361,6 +419,8 @@ offset_left = 48.0
 offset_top = 48.0
 offset_right = 93.0
 offset_bottom = 93.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_vwogu")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bc16l")
 
 [node name="Button4" type="Button" parent="Pinpad"]
@@ -369,6 +429,8 @@ offset_left = 96.0
 offset_top = 48.0
 offset_right = 141.0
 offset_bottom = 93.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_fh28v")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wpfpw")
 
 [node name="Button5" type="Button" parent="Pinpad"]
@@ -377,6 +439,8 @@ offset_left = -48.0
 offset_top = 96.0
 offset_right = -3.0
 offset_bottom = 141.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_g38mn")
 theme_override_styles/normal = SubResource("StyleBoxTexture_4tjr1")
 
 [node name="Button6" type="Button" parent="Pinpad"]
@@ -384,6 +448,8 @@ layout_mode = 0
 offset_top = 96.0
 offset_right = 45.0
 offset_bottom = 141.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_qtxen")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cw8q3")
 
 [node name="Button7" type="Button" parent="Pinpad"]
@@ -392,6 +458,8 @@ offset_left = 48.0
 offset_top = 96.0
 offset_right = 93.0
 offset_bottom = 141.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_yqq74")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vi8w4")
 
 [node name="Button8" type="Button" parent="Pinpad"]
@@ -400,6 +468,8 @@ offset_left = 96.0
 offset_top = 96.0
 offset_right = 141.0
 offset_bottom = 141.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_a81sm")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vtyee")
 
 [node name="Button9" type="Button" parent="Pinpad"]
@@ -408,6 +478,8 @@ offset_left = -24.0
 offset_top = 144.0
 offset_right = 21.0
 offset_bottom = 189.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_jrwny")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wlep1")
 
 [node name="Button0" type="Button" parent="Pinpad"]
@@ -416,6 +488,8 @@ offset_left = 24.0
 offset_top = 144.0
 offset_right = 69.0
 offset_bottom = 189.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_bpxmj")
 theme_override_styles/normal = SubResource("StyleBoxTexture_3rc0j")
 
 [node name="ButtonMinus" type="Button" parent="Pinpad"]
@@ -424,6 +498,8 @@ offset_left = 72.0
 offset_top = 144.0
 offset_right = 117.0
 offset_bottom = 189.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_upt3o")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0kcpp")
 
 [node name="Audio" type="Node2D" parent="."]
@@ -441,8 +517,11 @@ stream = ExtResource("19_saaja")
 volume_db = 6.611
 
 [node name="Simon_Game" type="Node2D" parent="."]
-position = Vector2(688, 216)
+position = Vector2(680, 256)
 scale = Vector2(1.4, 1.4)
+
+[node name="Simon_First_Timer" type="Timer" parent="Simon_Game"]
+one_shot = true
 
 [node name="Simon_Timer" type="Timer" parent="Simon_Game"]
 one_shot = true
@@ -562,29 +641,46 @@ position = Vector2(680, 320)
 scale = Vector2(12, 12)
 
 [node name="Rock_Button" type="Button" parent="Janken_Game"]
+offset_left = 3.33333
 offset_top = 4.0
-offset_right = 8.0
+offset_right = 11.3333
 offset_bottom = 12.0
+focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_5mkak")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v1h2a")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ok7rd")
 
 [node name="Paper_Button" type="Button" parent="Janken_Game"]
-offset_left = 7.33333
-offset_top = -2.0
-offset_right = 15.3333
-offset_bottom = 6.0
+offset_left = 12.0
+offset_top = 1.33333
+offset_right = 20.0
+offset_bottom = 9.33333
+focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_efvpe")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wtkkg")
 theme_override_styles/normal = SubResource("StyleBoxTexture_iav61")
 
 [node name="Scissors_Button" type="Button" parent="Janken_Game"]
-offset_left = 8.66667
-offset_top = 6.0
-offset_right = 16.6667
-offset_bottom = 14.0
+offset_left = 12.6667
+offset_top = -6.66667
+offset_right = 20.6667
+offset_bottom = 1.33333
+focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_jlley")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ugn60")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ewr5r")
 
 [node name="Janken_Display_Timer" type="Timer" parent="Janken_Game"]
+one_shot = true
+
+[node name="sfx_janken" type="AudioStreamPlayer2D" parent="Janken_Game"]
+position = Vector2(0, -5.33334)
+scale = Vector2(0.116667, 0.116667)
+stream = ExtResource("31_dpr0s")
+volume_db = 5.0
+pitch_scale = 4.0
+
+[node name="Janken_Draw_Timer" type="Timer" parent="Janken_Game"]
 one_shot = true
 
 [connection signal="timeout" from="End_timer" to="." method="_on_end_timer_timeout"]
@@ -601,6 +697,7 @@ one_shot = true
 [connection signal="pressed" from="Pinpad/Button9" to="." method="_on_button_9_pressed"]
 [connection signal="pressed" from="Pinpad/Button0" to="." method="_on_button_0_pressed"]
 [connection signal="pressed" from="Pinpad/ButtonMinus" to="." method="_on_button_minus_pressed"]
+[connection signal="timeout" from="Simon_Game/Simon_First_Timer" to="." method="_on_simon_first_timer_timeout"]
 [connection signal="timeout" from="Simon_Game/Simon_Timer" to="." method="_on_simon_timer_timeout"]
 [connection signal="timeout" from="Simon_Game/Simon_Timer2" to="." method="_on_simon_timer_2_timeout"]
 [connection signal="pressed" from="Simon_Game/SimonBlue/SS_Button_B" to="." method="_on_ss_button_b_pressed"]
@@ -611,3 +708,4 @@ one_shot = true
 [connection signal="pressed" from="Janken_Game/Paper_Button" to="." method="_on_paper_button_pressed"]
 [connection signal="pressed" from="Janken_Game/Scissors_Button" to="." method="_on_scissors_button_pressed"]
 [connection signal="timeout" from="Janken_Game/Janken_Display_Timer" to="." method="_on_janken_display_timer_timeout"]
+[connection signal="timeout" from="Janken_Game/Janken_Draw_Timer" to="." method="_on_janken_draw_timer_timeout"]
