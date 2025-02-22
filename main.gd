@@ -38,6 +38,11 @@ func _process(delta):
 					$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
 					if simon_wait == true:
 						_simon_guess()
+				elif minigame_type == 2:
+					$Mini_Display/Mini_Label.text = format_seconds(mini_timer)
+					$Time_Display/Small_Time_Label.text = (format_time(time_remaining))
+					if janken_guess == true:
+						_janken_guess()
 			elif minigame_time < 0 and minigame_on == false:
 				minigame_on = true
 				_minigame()
@@ -77,12 +82,12 @@ func _on_button_pressed() -> void:
 	
 ##Minigame Engine
 ######################################
-var minigame = [Callable(self, "_simon_game"),Callable(self, "_math_game")]
+var minigame = [Callable(self, "_simon_game"),Callable(self, "_math_game"), Callable(self, "_janken")]
 var mini_win : bool = true
 
 func _minigame():
 	if minigame_type == null:
-		minigame_type = randi_range(0,1) #increase range for more minigame types
+		minigame_type = randi_range(2,2) #increase range for more minigame types
 		print(minigame_type)
 		mini_timer = 10
 		_diodes()
@@ -365,3 +370,56 @@ func _on_diode_timer_timeout() -> void:
 
 func _on_end_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://game_over.tscn")
+	
+## JANKEN GAME
+###################################################
+var janken_cpu: int
+var janken_player: int 
+var janken_guess : bool = false
+var janken_display_words = ["ROCK?", "PAPER?", "SCISSOR?"]
+var janken_word : String
+
+func _janken():
+	$Pin_Display/Pin_Label.text = "JANKEN"
+	$Janken_Game/Janken_Display_Timer.start(0.5)
+	janken_cpu = randi_range(0, 2)
+	mini_timer = 5
+	_janken_display()
+	janken_guess = true
+
+func _janken_guess():
+	if mini_timer == 0:
+		mini_win = false
+		_janken_reset()
+
+func _janken_reset():
+	janken_guess = false
+	_mini_reset()
+func _janken_check():
+	if janken_player == janken_cpu:
+		mini_win = true
+		_janken_reset()
+	else:
+		mini_win = false
+		_janken_reset()
+		
+func _on_rock_button_pressed() -> void:
+	janken_player = 0
+	_janken_reset()
+
+func _on_paper_button_pressed() -> void:
+	janken_player = 1
+	_janken_reset()
+	
+func _on_scissors_button_pressed() -> void:
+	janken_player = 2
+	_janken_reset()
+
+func _janken_display():
+	janken_word = janken_display_words[randi() % janken_display_words.size()]
+	$Time_Display/Time_Label.text = janken_word
+	
+func _on_janken_display_timer_timeout() -> void:
+		_janken_display()
+		if mini_timer > 0.5:
+			$Janken_Game/Janken_Display_Timer.start(0.5)
