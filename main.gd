@@ -99,7 +99,8 @@ func _mini_reset():
 		sfx_correct.play()
 	else: #LOSE GAME
 		time_remaining = time_remaining / 2
-		lives -= 1
+		if minigame_type != 2:
+			lives -= 1
 		$Life_Label.text = str(lives)
 		$Pin_Display/Pin_Label.text = "LOSER"
 		sfx_wrong.play()
@@ -376,13 +377,12 @@ func _on_end_timer_timeout() -> void:
 var janken_cpu: int
 var janken_player: int 
 var janken_guess : bool = false
-var janken_display_words = ["ROCK?", "PAPER?", "SCISSOR?"]
+var janken_display_words = ["ROCK", "PAPER", "SCISSOR"]
 var janken_word : String
 
 func _janken():
 	$Pin_Display/Pin_Label.text = "JANKEN"
 	$Janken_Game/Janken_Display_Timer.start(0.5)
-	janken_cpu = randi_range(0, 2)
 	mini_timer = 5
 	_janken_display()
 	janken_guess = true
@@ -391,32 +391,43 @@ func _janken_guess():
 	if mini_timer == 0:
 		mini_win = false
 		_janken_reset()
+		_mini_reset()
 
 func _janken_reset():
 	janken_guess = false
-	_mini_reset()
 func _janken_check():
-	if janken_player == janken_cpu:
+	print(janken_cpu)
+	print(janken_player)
+	if (janken_cpu == 0 and janken_player == 1) or (janken_cpu == 1 and janken_player == 2) or (janken_cpu == 2 and janken_player == 0):
 		mini_win = true
 		_janken_reset()
-	else:
+		_mini_reset()
+	elif (janken_cpu == 0 and janken_player == 2) or (janken_cpu == 1 and janken_player == 0) or (janken_cpu == 2 and janken_player == 1):
 		mini_win = false
 		_janken_reset()
+		_mini_reset()
+	else:
+		_janken_reset()
+		_janken()
 		
 func _on_rock_button_pressed() -> void:
-	janken_player = 0
-	_janken_reset()
+	if janken_guess == true:
+		janken_player = 0
+		_janken_check()
 
 func _on_paper_button_pressed() -> void:
-	janken_player = 1
-	_janken_reset()
+	if janken_guess == true:
+		janken_player = 1
+		_janken_check()
 	
 func _on_scissors_button_pressed() -> void:
-	janken_player = 2
-	_janken_reset()
+	if janken_guess == true:
+		janken_player = 2
+		_janken_check()
 
 func _janken_display():
-	janken_word = janken_display_words[randi() % janken_display_words.size()]
+	janken_cpu = randi_range(0, 2)
+	janken_word = janken_display_words[janken_cpu]
 	$Time_Display/Time_Label.text = janken_word
 	
 func _on_janken_display_timer_timeout() -> void:

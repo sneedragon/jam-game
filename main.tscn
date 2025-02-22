@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://7rlxj6kjunym"]
+[gd_scene load_steps=59 format=3 uid="uid://7rlxj6kjunym"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ajsl"]
 [ext_resource type="Texture2D" uid="uid://bfa4h78tah6a4" path="res://Assets/Background.png" id="2_tu8mm"]
@@ -31,6 +31,12 @@
 [ext_resource type="Texture2D" uid="uid://clokq50j267uf" path="res://Assets/simon_red_light.png" id="26_dhyib"]
 [ext_resource type="Texture2D" uid="uid://ckbhlqs8b3uh1" path="res://Assets/simon_yellow_light.png" id="28_ifbbj"]
 [ext_resource type="AudioStream" uid="uid://cuc08fn8fudh0" path="res://Assets/beep.ogg" id="31_dpr0s"]
+[ext_resource type="Texture2D" uid="uid://dxebumiwaw2ri" path="res://Assets/RockOn.png" id="32_juqxd"]
+[ext_resource type="Texture2D" uid="uid://bt6e1ehb0ex8v" path="res://Assets/RockOff.png" id="33_kmh8d"]
+[ext_resource type="Texture2D" uid="uid://j16q3xuyfc0n" path="res://Assets/PaperOn.png" id="34_rdk5j"]
+[ext_resource type="Texture2D" uid="uid://c25ltru46v447" path="res://Assets/PaperOff.png" id="35_j2qhx"]
+[ext_resource type="Texture2D" uid="uid://00kw0hok45d8" path="res://Assets/ScissorsOn.png" id="36_o4bg0"]
+[ext_resource type="Texture2D" uid="uid://r32dyfcq0spa" path="res://Assets/ScissorsOff.png" id="37_ddqw0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vwd7"]
 
@@ -77,6 +83,24 @@ texture = ExtResource("5_0bxms")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0kcpp"]
 texture = ExtResource("15_mnhjr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mkak"]
+texture = ExtResource("32_juqxd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ok7rd"]
+texture = ExtResource("33_kmh8d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efvpe"]
+texture = ExtResource("34_rdk5j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iav61"]
+texture = ExtResource("35_j2qhx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlley"]
+texture = ExtResource("36_o4bg0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewr5r"]
+texture = ExtResource("37_ddqw0")
 
 [node name="Main" type="Node2D"]
 position = Vector2(208, 176)
@@ -279,9 +303,9 @@ color = Color(0, 0.0588235, 0, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 224.0
-offset_top = 208.0
+offset_top = 216.0
 offset_right = 348.0
-offset_bottom = 248.0
+offset_bottom = 256.0
 
 [node name="Pin_Label" type="Label" parent="Pin_Display"]
 layout_mode = 1
@@ -312,9 +336,9 @@ color = Color(0, 0.0588235, 0, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 272.0
-offset_top = 232.0
+offset_top = 256.0
 offset_right = 312.0
-offset_bottom = 272.0
+offset_bottom = 296.0
 
 [node name="Button1" type="Button" parent="Pinpad"]
 layout_mode = 0
@@ -417,7 +441,8 @@ stream = ExtResource("19_saaja")
 volume_db = 6.611
 
 [node name="Simon_Game" type="Node2D" parent="."]
-position = Vector2(773, 409)
+position = Vector2(688, 216)
+scale = Vector2(1.4, 1.4)
 
 [node name="Simon_Timer" type="Timer" parent="Simon_Game"]
 one_shot = true
@@ -533,18 +558,31 @@ volume_db = 10.0
 pitch_scale = 1.3
 
 [node name="Janken_Game" type="Node2D" parent="."]
+position = Vector2(680, 320)
+scale = Vector2(12, 12)
 
 [node name="Rock_Button" type="Button" parent="Janken_Game"]
+offset_top = 4.0
 offset_right = 8.0
-offset_bottom = 8.0
+offset_bottom = 12.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_5mkak")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ok7rd")
 
 [node name="Paper_Button" type="Button" parent="Janken_Game"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 7.33333
+offset_top = -2.0
+offset_right = 15.3333
+offset_bottom = 6.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_efvpe")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iav61")
 
 [node name="Scissors_Button" type="Button" parent="Janken_Game"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 8.66667
+offset_top = 6.0
+offset_right = 16.6667
+offset_bottom = 14.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_jlley")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ewr5r")
 
 [node name="Janken_Display_Timer" type="Timer" parent="Janken_Game"]
 one_shot = true
