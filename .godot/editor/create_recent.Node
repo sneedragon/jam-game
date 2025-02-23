@@ -1,10 +1,10 @@
+AudioStreamPlayer2D
 Timer
 Button
 Node2D
 ColorRect
 Label
 TextureRect
-AudioStreamPlayer2D
 PointLight2D
 RichTextLabel
 Camera2D

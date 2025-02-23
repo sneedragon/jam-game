@@ -2,3 +2,6 @@ res://title_screen.tscn
 res://main.tscn
 res://game_over.tscn
 res://main.gd
+res://game_over.gd
+res://global.gd
+res://title_screen.gd

@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg4lt5lg2wcig"]
+[gd_scene load_steps=11 format=3 uid="uid://cg4lt5lg2wcig"]
 
 [ext_resource type="FontFile" uid="uid://dkj87jhqfrl0g" path="res://Fonts/digital-7 (italic).ttf" id="1_iwy8d"]
 [ext_resource type="Script" path="res://game_over.gd" id="1_wm2r2"]
 [ext_resource type="AudioStream" uid="uid://hba35blksvcn" path="res://Assets/metalpipe.ogg" id="2_ioyev"]
 [ext_resource type="FontFile" uid="uid://chh4mn3cebhse" path="res://Fonts/digital-7.ttf" id="4_0snu3"]
 [ext_resource type="Texture2D" uid="uid://dv841x3d4hxrx" path="res://Assets/StartButton.png" id="5_ex43j"]
+[ext_resource type="Texture2D" uid="uid://dfo82dllc3rcr" path="res://Assets/StartButtonOn.png" id="5_kte5c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnog7"]
+texture = ExtResource("5_kte5c")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6pmd"]
 texture = ExtResource("5_ex43j")
 
-[node name="Game_Over" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7k8ou"]
+texture = ExtResource("5_kte5c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0315h"]
+texture = ExtResource("5_kte5c")
+
+[node name="game_over" type="Node2D"]
 script = ExtResource("1_wm2r2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -59,30 +69,33 @@ offset_bottom = 400.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0snu3")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxTexture_pnog7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
 text = "RETRY"
 
 [node name="Menu" type="Button" parent="."]
 z_index = 10
-offset_left = 432.0
+offset_left = 112.0
 offset_top = 448.0
-offset_right = 768.0
+offset_right = 448.0
 offset_bottom = 544.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0snu3")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxTexture_7k8ou")
 theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
 text = "BACK TO TITLE"
 
 [node name="Exit" type="Button" parent="."]
 z_index = 10
-offset_left = 432.0
-offset_top = 584.0
-offset_right = 768.0
-offset_bottom = 680.0
+offset_left = 760.0
+offset_top = 448.0
+offset_right = 1096.0
+offset_bottom = 544.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0snu3")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxTexture_0315h")
 theme_override_styles/normal = SubResource("StyleBoxTexture_r6pmd")
 text = "GIVE UP"
 

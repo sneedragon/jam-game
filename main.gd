@@ -1,13 +1,14 @@
 extends Node2D
 
 var minigame_on : bool = false #Is Minigame running?
-var countdown_time : float = 20.0  # Countdown time in seconds
+var countdown_time : float = 5.0  # Countdown time in seconds
 var time_remaining : float = countdown_time
 var minigame_time : float = 5 #Time until next Minigame
 var mini_timer : float = 0 #Time to finish minigame
 var minigame_type = null
 var lives: int = 5
 var game_over : bool = false
+var game_over_scene = load("res://game_over.tscn")
 @onready var sfx_janken: AudioStreamPlayer2D = $Janken_Game/sfx_janken
 @onready var sfx_wrong: AudioStreamPlayer2D = $Audio/sfx_wrong
 @onready var sfx_correct: AudioStreamPlayer2D = $Audio/sfx_correct
@@ -16,10 +17,14 @@ var game_over : bool = false
 @onready var sfx_beep_green: AudioStreamPlayer2D = $Simon_Game/sfx_beep_green
 @onready var sfx_beep_red: AudioStreamPlayer2D = $Simon_Game/sfx_beep_red
 @onready var sfx_beep_yellow: AudioStreamPlayer2D = $Simon_Game/sfx_beep_yellow
+@onready var music: AudioStreamPlayer2D = $music
+@onready var sfx_boom: AudioStreamPlayer2D = $sfx_boom
+
 
 
 func _ready():
 	$Time_Display/Time_Label.text = (format_time(time_remaining))
+	music.play()
 	
 func _process(delta):
 	if game_over == false:
@@ -58,6 +63,7 @@ func _process(delta):
 				
 		else:
 			game_over = true
+			sfx_boom.play()
 			_game_over()
 	
 func _game_over():
@@ -256,8 +262,10 @@ func _simon_game():
 func _simon_generator():
 	if simon_order == "":
 		simon_color = randi_range(0, 3)
-	else:
+	elif simon_order.length() < 4:
 		simon_color = randi_range(0, 4)
+	elif simon_order.length() >= 4:
+		simon_color = randi_range(0, 6)
 	if simon_pause == false:
 		match simon_color:
 			0: #Blue
@@ -282,6 +290,12 @@ func _simon_generator():
 				$Time_Display/Time_Label.text = "YELLOW"
 				sfx_beep_yellow.play()
 			4: #TERMINATE
+				simon_continue = false
+				$Time_Display/Time_Label.text = "ENTER"
+			5: #TERMINATE
+				simon_continue = false
+				$Time_Display/Time_Label.text = "ENTER"
+			6: #TERMINATE
 				simon_continue = false
 				$Time_Display/Time_Label.text = "ENTER"
 		simon_pause = true
@@ -371,7 +385,7 @@ func _on_diode_timer_timeout() -> void:
 
 
 func _on_end_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://game_over.tscn")
+	get_tree().call_deferred("change_scene_to_packed", game_over_scene)
 	
 ## JANKEN GAME
 ###################################################
