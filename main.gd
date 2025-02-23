@@ -1,7 +1,7 @@
 extends Node2D
 
 var minigame_on : bool = false #Is Minigame running?
-var countdown_time : float = 5.0  # Countdown time in seconds
+var countdown_time : float = 20.0  # Countdown time in seconds
 var time_remaining : float = countdown_time
 var minigame_time : float = 5 #Time until next Minigame
 var mini_timer : float = 0 #Time to finish minigame
