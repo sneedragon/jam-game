@@ -1,1 +1,4 @@
 res://game_over.tscn
+res://title_screen.tscn
+res://main.tscn
+res://main.gd
